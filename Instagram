@@ -1,0 +1,56 @@
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.net.URI;
+
+public class RobotKeyPress {
+
+    public static void main(String[] args) {
+        try {
+            try { //Open Instagram in Default Browser
+                URI uri= new URI("https://www.instagram.com/");
+                java.awt.Desktop.getDesktop().browse(uri);
+                System.out.println("Web page opened in browser");
+            } catch (Exception e) {}
+
+            Thread.sleep(1000);
+
+            // Create a new instance for the Robot class
+            Robot robot = new Robot();
+
+            // Trigger keypress events:
+            /*
+            1. Ctrl + Shift + I == Hotkey in most browser for opening developer tools
+            2. Ctrl + Shift + M == Hotkey in most browser for toggling emulator mode in dev tools
+            3. Ctrl + F5 == Hotkey for refreshing webpage
+            4. Ctrl + Shift + I == Hotkey to close dev tools
+            * */
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_SHIFT);
+            robot.keyPress(KeyEvent.VK_I);
+            robot.keyRelease(KeyEvent.VK_I);
+            robot.keyRelease(KeyEvent.VK_SHIFT);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            Thread.sleep(500);
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_SHIFT);
+            robot.keyPress(KeyEvent.VK_M);
+            robot.keyRelease(KeyEvent.VK_M);
+            robot.keyRelease(KeyEvent.VK_SHIFT);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            Thread.sleep(500);
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_F5);
+            robot.keyRelease(KeyEvent.VK_F5);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            Thread.sleep(1000);
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_SHIFT);
+            robot.keyPress(KeyEvent.VK_I);
+            robot.keyRelease(KeyEvent.VK_I);
+            robot.keyRelease(KeyEvent.VK_SHIFT);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            System.exit(0);
+        }
+        catch (Exception e) {}
+    }
+}
